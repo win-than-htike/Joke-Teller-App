@@ -27,6 +27,7 @@
             android:authorities="com.winthan.joketeller"
             android:exported="false" />
 
+        <activity android:name=".ui.activities.JokeDetailActivity"></activity>
     </application>
 
 </manifest>

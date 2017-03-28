@@ -1,5 +1,6 @@
 package com.winthan.joketeller.ui.fragments;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.winthan.joketeller.R;
+import com.winthan.joketeller.clicklistener.ItemClickListener;
 import com.winthan.joketeller.data.database.JokeContract;
 import com.winthan.joketeller.data.models.JokeModel;
 import com.winthan.joketeller.data.network.ApiRetrofit;
@@ -50,6 +52,8 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
 
     private JokeRvAdapter mAdapter;
 
+    private ItemClickListener itemClickListener;
+
     public MainActivityFragment() {
     }
 
@@ -60,10 +64,16 @@ public class MainActivityFragment extends Fragment implements LoaderManager.Load
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        itemClickListener = (ItemClickListener) context;
+    }
+
+    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         JokeModel.getInstance();
-        mAdapter = new JokeRvAdapter(getActivity());
+        mAdapter = new JokeRvAdapter(getActivity(), itemClickListener);
     }
 
     @Override

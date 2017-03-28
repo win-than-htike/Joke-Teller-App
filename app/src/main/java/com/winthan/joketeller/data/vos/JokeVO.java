@@ -8,13 +8,14 @@ import com.google.gson.annotations.SerializedName;
 import com.winthan.joketeller.JokeTellerApp;
 import com.winthan.joketeller.data.database.JokeContract;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by winthanhtike on 3/26/17.
  */
 
-public class JokeVO {
+public class JokeVO implements Serializable{
 
     @SerializedName("id")
     private String id;

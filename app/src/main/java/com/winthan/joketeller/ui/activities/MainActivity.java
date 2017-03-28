@@ -1,5 +1,6 @@
 package com.winthan.joketeller.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,10 +10,12 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.winthan.joketeller.clicklistener.ItemClickListener;
+import com.winthan.joketeller.data.vos.JokeVO;
 import com.winthan.joketeller.ui.fragments.MainActivityFragment;
 import com.winthan.joketeller.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ItemClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,5 +62,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onTapJoke(JokeVO jokeVO, int position) {
+        Intent jokeDetailIntent = JokeDetailActivity.newInstance(this, jokeVO);
+        startActivity(jokeDetailIntent);
     }
 }

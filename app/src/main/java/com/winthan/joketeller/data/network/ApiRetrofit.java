@@ -29,7 +29,7 @@ public class ApiRetrofit implements DataAgent{
     private ApiRetrofit(){
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.43.133:3000/")
+                .baseUrl("http://192.168.0.157:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
